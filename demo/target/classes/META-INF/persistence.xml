@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence version="2.1" xmlns="http://xmlns.jcp.org/xml/ns/persistence" 
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
+	
+	<persistence-unit name="myPU">
+	<class>com.example.model.Student</class>
+		
+<!-- If using MySQL 5.7 -->
+<!--  
+	as a root user give a command
+	use performance_schema; 
+	GRANT SELECT ON performance_schema.session_variables TO pena@localhost;
+	
+	Change pena to the username you are using below in the property jdbc.user.
+	 -->		
+		
+<!--  jdbcDriver == class, where in the implementation of database functions--> 
+<!--  jdbcUrl == address to the database--> 
+<!--  jdbcUser == user name to the database--> 
+<!--  jdbcPassword == password of the database user--> 
+<!--  ddlGeneration == database tables will be created, if they do not exist--> 
+    <properties>
+	    <property name="jakarta.persistence.jdbc.driver" value="com.mysql.cj.jdbc.Driver"/>
+	    <property name="jakarta.persistence.jdbc.url" value="jdbc:mysql://mysql:3306/school" />
+	    <property name="jakarta.persistence.jdbc.user" value="student" />
+	    <property name="jakarta.persistence.jdbc.password" value="student" />
+	</properties>
+	
+	</persistence-unit>
+</persistence>
+
+<!--
+<persistence xmlns="https://jakarta.ee/xml/ns/persistence" version="3.1">
+
+  <persistence-unit name="myPU">
+
+    <class>com.example.model.Student</class>
+
+    <properties>
+      <property name="jakarta.persistence.jdbc.url"
+                value="jdbc:mysql://mysql:3306/school"/>
+      <property name="jakarta.persistence.jdbc.user" value="student"/>
+      <property name="jakarta.persistence.jdbc.password" value="student"/>
+      <property name="jakarta.persistence.jdbc.driver"
+                value="com.mysql.cj.jdbc.Driver"/>
+
+      <property name="hibernate.hbm2ddl.auto" value="update"/>
+      <property name="hibernate.show_sql" value="true"/>
+    </properties>
+
+  </persistence-unit>
+
+</persistence>
+-->
